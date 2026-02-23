@@ -61,7 +61,7 @@ README.md    — описание проекта
 ### Database
 В процессе решения
 
-## 5. Последовательность работы с веткой (см. [правила создания Pull Request](#7-правила-pull-request))
+## 5. Последовательность работы с веткой
 
 ### 1. Обновить `dev`
 
@@ -106,7 +106,7 @@ git push -u origin feature/short-task-name
 git push -u origin feature/short-task-name
 ```
 
-### 5. Создать Pull Request → в `dev`
+### 5. Создать Pull Request → в `dev` (см. [правила создания Pull Request](#7-правила-pull-request))
 
 После одобрения — merge в `dev`.
 
