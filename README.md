@@ -103,7 +103,7 @@ git push -u origin feature/short-task-name
 При последующих пушах можно использовать: 
 
 ```bash
-git push -u origin feature/short-task-name
+git push
 ```
 
 ### 5. Создать Pull Request → в `dev` (см. [правила создания Pull Request](#7-правила-pull-request))
