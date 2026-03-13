@@ -17,9 +17,12 @@ export type TrainingGoal = {
   end_date: string
 }
 
+// Типы и статусы тренировочных сессий
 export type TrainingSessionStatus = 'planned' | 'in_progress' | 'completed' | 'skipped'
 export type TrainingSessionType = 'easy_run' | 'interval' | 'long_run' | 'recovery'
 
+
+// Упражнение, входящее в тренировочную сессию
 export type Exercise = {
   id: number
   title: string
@@ -53,6 +56,8 @@ export type CalendarItem = {
   status?: TrainingSessionStatus
 }
 
+
+// Агрегированная статистика выполнения тренировок
 export type TrainingStatistics = {
   completed: number
   skipped: number
