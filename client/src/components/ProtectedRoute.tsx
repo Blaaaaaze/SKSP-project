@@ -6,6 +6,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const location = useLocation()
 
   if (!isAuthenticated) {
+    // Сохраняем текущий путь, чтобы можно было вернуть пользователя после входа.
     return <Navigate to="/login" state={{ from: location }} replace />
   }
 

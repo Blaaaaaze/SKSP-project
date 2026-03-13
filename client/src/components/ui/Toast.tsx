@@ -8,6 +8,7 @@ type ToastProps = {
 
 export function Toast({ message, type = 'info', onClose }: ToastProps) {
   useEffect(() => {
+    // Автоматически скрываем уведомление через несколько секунд
     const t = setTimeout(onClose, 4000)
     return () => clearTimeout(t)
   }, [onClose])
