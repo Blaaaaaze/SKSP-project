@@ -6,7 +6,9 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 }
 
 export function Input({ label, error, id, className = '', ...props }: InputProps) {
+  // Если id не передан, формируем его из текста label
   const inputId = id || label.toLowerCase().replace(/\s/g, '-')
+
   return (
     <div className="mb-4">
       <label htmlFor={inputId} className="block text-sm font-medium text-slate-700 mb-1">
