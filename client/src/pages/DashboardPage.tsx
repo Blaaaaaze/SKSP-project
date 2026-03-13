@@ -23,8 +23,10 @@ export function DashboardPage() {
     queryFn: api.getNotifications,
   })
 
+  // Если календарь ещё не загружен или пуст, работаем с безопасным значением по умолчанию
   const items = calendar || []
   const today = format(new Date(), 'yyyy-MM-dd')
+  // Выбираем ближайшую тренировку, начиная с текущей даты
   const upcoming = items
     .filter((i) => i.date >= today)
     .sort((a, b) => a.date.localeCompare(b.date))[0]
@@ -38,6 +40,7 @@ export function DashboardPage() {
     )
   }
 
+  // Если план ещё не создан, предлагаем пользователю перейти к постановке цели
   if (items.length === 0) {
     return (
       <div className="text-center py-12">
@@ -73,7 +76,8 @@ export function DashboardPage() {
           </Link>
         </Card>
       )}
-
+      
+      {/*Краткая сводка по выполнению тренировочного плана */}
       {stats && !statsLoading && (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <Card>
@@ -98,6 +102,7 @@ export function DashboardPage() {
         <TrainingCalendar items={items} />
       </div>
 
+      {/*Показываем только последние уведомления, чтобы не перегружать главную страницу */}
       {notifications && notifications.length > 0 && (
         <Card>
           <h3 className="font-semibold text-slate-800 mb-3">Последние уведомления</h3>
