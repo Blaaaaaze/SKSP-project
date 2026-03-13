@@ -27,6 +27,7 @@ function getToken(): string | null {
   return _token ?? localStorage.getItem('token')
 }
 
+// Формирует стандарные заголовки для JSON-запросов и при необходимости добавляет Bearer-токен
 function getHeaders(includeAuth = true): HeadersInit {
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
@@ -39,6 +40,7 @@ function getHeaders(includeAuth = true): HeadersInit {
   return headers
 }
 
+// Централизованно обрабатывает ответы API и сбрасывает авторизацию при 401
 async function handleResponse<T>(res: Response): Promise<T> {
   if (res.status === 401) {
     setApiToken(null)
@@ -52,6 +54,7 @@ async function handleResponse<T>(res: Response): Promise<T> {
   return data as T
 }
 
+// Основной набор методов для работы с backend API приложения
 export const api = {
   async register(data: {
     name: string

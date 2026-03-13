@@ -26,6 +26,7 @@ export function TrainingPage() {
   const queryClient = useQueryClient()
   const [showCompleteModal, setShowCompleteModal] = useState(false)
 
+  // Идентификатор тренировки берем из URL-параметра /training/:id
   const sessionId = id ? parseInt(id, 10) : 0
 
   const { data: session, isLoading, error } = useQuery({
@@ -40,6 +41,7 @@ export function TrainingPage() {
     enabled: !!sessionId,
   })
 
+  // После старта тренировки обновляем карточку тренировки и календарь
   const startMutation = useMutation({
     mutationFn: () => api.startTraining(sessionId),
     onSuccess: () => {
@@ -47,7 +49,8 @@ export function TrainingPage() {
       queryClient.invalidateQueries({ queryKey: ['calendar'] })
     },
   })
-
+ 
+  // После завершения тренировки обновляем детали, календарь и статистику
   const completeMutation = useMutation({
     mutationFn: (data: CompleteFormData) =>
       api.completeTraining(sessionId, {
@@ -99,6 +102,7 @@ export function TrainingPage() {
     )
   }
 
+  // Кнопки действий зависят от текущего статуса тренировки
   const canStart = session.status === 'planned'
   const canComplete = session.status === 'in_progress'
 
@@ -162,6 +166,7 @@ export function TrainingPage() {
         </Card>
       )}
 
+      {/* Список упражнений внутри выбранной тренировочной сессии */}
       <Card>
         <h3 className="font-semibold text-slate-800 mb-4">Упражнения</h3>
         <ol className="space-y-4">
@@ -206,6 +211,7 @@ export function TrainingPage() {
         )}
       </div>
 
+      {/* Модальное окно для фиксации фактических результатов тренировки */}
       {showCompleteModal && (
         <div
           className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
