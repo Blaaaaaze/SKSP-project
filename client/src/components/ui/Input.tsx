@@ -6,7 +6,7 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 }
 
 export function Input({ label, error, id, className = '', ...props }: InputProps) {
-  // Если id не передан, формируем его из текста label.
+  // Если id не передан, формируем его из текста label
   const inputId = id || label.toLowerCase().replace(/\s/g, '-')
 
   return (

@@ -24,7 +24,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [])
 
   useEffect(() => {
-    // Восстанавливаем токен из localStorage при первом рендере.
+    // Восстанавливаем токен из localStorage при первом рендере 
     const stored = localStorage.getItem('token')
     setToken(stored)
     setApiToken(stored)
