@@ -1,3 +1,4 @@
+//Персональные данные
 export type User = {
   id: number
   name: string
@@ -9,6 +10,7 @@ export type User = {
   created_at: string
 }
 
+//Хранения информации о дистанции, названии цели и временном промежутке подготовки.
 export type TrainingGoal = {
   id: number
   goal_name: string
@@ -17,9 +19,12 @@ export type TrainingGoal = {
   end_date: string
 }
 
+// Типы и статусы тренировочных сессий
 export type TrainingSessionStatus = 'planned' | 'in_progress' | 'completed' | 'skipped'
 export type TrainingSessionType = 'easy_run' | 'interval' | 'long_run' | 'recovery'
 
+
+// Упражнение, входящее в тренировочную сессию
 export type Exercise = {
   id: number
   title: string
@@ -28,7 +33,7 @@ export type Exercise = {
   duration?: number
   distance_km?: number
 }
-
+// Содержит всю информацию о запланированной или выполненной тренировке
 export type TrainingSession = {
   id: number
   plan_id: number
@@ -46,6 +51,7 @@ export type TrainingSession = {
   exercises: Exercise[]
 }
 
+// Календарь тренировок
 export type CalendarItem = {
   session_id: number
   date: string
@@ -53,6 +59,8 @@ export type CalendarItem = {
   status?: TrainingSessionStatus
 }
 
+
+// Агрегированная статистика выполнения тренировок
 export type TrainingStatistics = {
   completed: number
   skipped: number
@@ -60,6 +68,7 @@ export type TrainingStatistics = {
   completion_rate: number
 }
 
+// Напоминания о тренировках,служебных сообщениях системы и фиксация статуса доставки/прочтения.
 export type NotificationItem = {
   id: number
   user_id: number
